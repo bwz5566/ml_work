@@ -9,7 +9,7 @@ def hello():
     print("hello")
 
 
-def target_mean_v2(data, y_name, x_name):
+def v2(data, y_name, x_name):
     result = np.zeros(data.shape[0])
     value_dict = dict()
     count_dict = dict()
@@ -24,16 +24,16 @@ def target_mean_v2(data, y_name, x_name):
         result[i] = (value_dict[data.loc[i, x_name]] - data.loc[i, y_name]) / (count_dict[data.loc[i, x_name]] - 1)
     return result
 
-cpdef target_mean_v3(data, y_name, x_name):
+cpdef v3(data, y_name, x_name):
     cdef long nrow = data.shape[0]
     cdef np.ndarray[double] result = np.asfortranarray(np.zeros(nrow), dtype=np.float64)
     cdef np.ndarray[double] y = np.asfortranarray(data[y_name], dtype=np.float64)
     cdef np.ndarray[double] x = np.asfortranarray(data[x_name], dtype=np.float64)
 
-    target_mean_v3_impl(result, y, x, nrow)
+    v3_impl(result, y, x, nrow)
     return result
 
-cdef void target_mean_v3_impl(double[:] result, double[:] y, double[:] x, const long nrow):
+cdef void v3_impl(double[:] result, double[:] y, double[:] x, const long nrow):
     cdef dict value_dict = dict()
     cdef dict count_dict = dict()
 
@@ -53,18 +53,18 @@ cdef void target_mean_v3_impl(double[:] result, double[:] y, double[:] x, const 
 
 ######################################################################
 # homework
-cpdef target_mean_v4(data, y_name, x_name):
+cpdef v4(data, y_name, x_name):
     cdef long nrow = data.shape[0]
     cdef np.ndarray[double] result = np.asfortranarray(np.zeros(nrow), dtype=np.float64)
     cdef np.ndarray[double] y = np.asfortranarray(data[y_name], dtype=np.float64)
     cdef np.ndarray[int] x = np.asfortranarray(data[x_name], dtype=np.int)
-    target_mean_v4_impl(result, y, x, nrow)
+    v4_impl(result, y, x, nrow)
     return result
 
 @cython.profile(False)
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cdef void target_mean_v4_impl(double[:] result, double[:] y, int[:] x, const long nrow):
+cdef void v4_impl(double[:] result, double[:] y, int[:] x, const long nrow):
     cdef map[int, double] value_dict
     cdef map[int, double] count_dict
     cdef long i

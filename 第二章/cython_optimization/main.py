@@ -14,21 +14,21 @@ print("input_y_shape:{}\ninput_x_shape{}".format(y.shape, x.shape))
 
 def v2():
     start = time.time()
-    result_v2 = tm.target_mean_v2(data, 'y', 'x')
+    result_v2 = tm.v2(data, 'y', 'x')
     print("原始运行时间：{}".format(time.time() - start))
     return result_v2
 
 
 def v3():
     start = time.time()
-    result_v3 = tm.target_mean_v3(data, 'y', 'x')
+    result_v3 = tm.v3(data, 'y', 'x')
     print("教师版运行时间：{}".format(time.time() - start))
     return result_v3
 
 
 def v4():
     start = time.time()
-    result_v4 = tm.target_mean_v4(data, 'y', 'x')
+    result_v4 = tm.v4(data, 'y', 'x')
     print("学生版运行时间：{}".format(time.time() - start))
     return result_v4
 

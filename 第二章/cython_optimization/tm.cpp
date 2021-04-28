@@ -2138,10 +2138,10 @@ static PyObject *contiguous = 0;
 static PyObject *indirect_contiguous = 0;
 static int __pyx_memoryview_thread_locks_used;
 static PyThread_type_lock __pyx_memoryview_thread_locks[8];
-static PyObject *__pyx_f_2tm_target_mean_v3(PyObject *, PyObject *, PyObject *, int __pyx_skip_dispatch); /*proto*/
-static void __pyx_f_2tm_target_mean_v3_impl(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, long const ); /*proto*/
-static PyObject *__pyx_f_2tm_target_mean_v4(PyObject *, PyObject *, PyObject *, int __pyx_skip_dispatch); /*proto*/
-static void __pyx_f_2tm_target_mean_v4_impl(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, long const ); /*proto*/
+static PyObject *__pyx_f_2tm_v3(PyObject *, PyObject *, PyObject *, int __pyx_skip_dispatch); /*proto*/
+static void __pyx_f_2tm_v3_impl(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, long const ); /*proto*/
+static PyObject *__pyx_f_2tm_v4(PyObject *, PyObject *, PyObject *, int __pyx_skip_dispatch); /*proto*/
+static void __pyx_f_2tm_v4_impl(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, long const ); /*proto*/
 static struct __pyx_array_obj *__pyx_array_new(PyObject *, Py_ssize_t, char *, char *, char *); /*proto*/
 static void *__pyx_align_pointer(void *, size_t); /*proto*/
 static PyObject *__pyx_memoryview_new(PyObject *, int, int, __Pyx_TypeInfo *); /*proto*/
@@ -2198,6 +2198,7 @@ static const char __pyx_k_i[] = "i";
 static const char __pyx_k_id[] = "id";
 static const char __pyx_k_np[] = "np";
 static const char __pyx_k_tm[] = "tm";
+static const char __pyx_k_v2[] = "v2";
 static const char __pyx_k_end[] = "end";
 static const char __pyx_k_int[] = "int";
 static const char __pyx_k_loc[] = "loc";
@@ -2269,7 +2270,6 @@ static const char __pyx_k_stringsource[] = "stringsource";
 static const char __pyx_k_pyx_getbuffer[] = "__pyx_getbuffer";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_asfortranarray[] = "asfortranarray";
-static const char __pyx_k_target_mean_v2[] = "target_mean_v2";
 static const char __pyx_k_View_MemoryView[] = "View.MemoryView";
 static const char __pyx_k_allocate_buffer[] = "allocate_buffer";
 static const char __pyx_k_dtype_is_object[] = "dtype_is_object";
@@ -2415,7 +2415,6 @@ static PyObject *__pyx_kp_s_strided_and_direct_or_indirect;
 static PyObject *__pyx_kp_s_strided_and_indirect;
 static PyObject *__pyx_kp_s_stringsource;
 static PyObject *__pyx_n_s_struct;
-static PyObject *__pyx_n_s_target_mean_v2;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_tm;
 static PyObject *__pyx_kp_s_tm_pyx;
@@ -2424,14 +2423,15 @@ static PyObject *__pyx_kp_s_unable_to_allocate_shape_and_str;
 static PyObject *__pyx_kp_u_unknown_dtype_code_in_numpy_pxd;
 static PyObject *__pyx_n_s_unpack;
 static PyObject *__pyx_n_s_update;
+static PyObject *__pyx_n_s_v2;
 static PyObject *__pyx_n_s_value_dict;
 static PyObject *__pyx_n_s_x_name;
 static PyObject *__pyx_n_s_y_name;
 static PyObject *__pyx_n_s_zeros;
 static PyObject *__pyx_pf_2tm_hello(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
-static PyObject *__pyx_pf_2tm_2target_mean_v2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_data, PyObject *__pyx_v_y_name, PyObject *__pyx_v_x_name); /* proto */
-static PyObject *__pyx_pf_2tm_4target_mean_v3(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_data, PyObject *__pyx_v_y_name, PyObject *__pyx_v_x_name); /* proto */
-static PyObject *__pyx_pf_2tm_6target_mean_v4(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_data, PyObject *__pyx_v_y_name, PyObject *__pyx_v_x_name); /* proto */
+static PyObject *__pyx_pf_2tm_2v2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_data, PyObject *__pyx_v_y_name, PyObject *__pyx_v_x_name); /* proto */
+static PyObject *__pyx_pf_2tm_4v3(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_data, PyObject *__pyx_v_y_name, PyObject *__pyx_v_x_name); /* proto */
+static PyObject *__pyx_pf_2tm_6v4(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_data, PyObject *__pyx_v_y_name, PyObject *__pyx_v_x_name); /* proto */
 static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
@@ -2586,21 +2586,21 @@ static PyObject *__pyx_pf_2tm_hello(CYTHON_UNUSED PyObject *__pyx_self) {
 /* "tm.pyx":12
  * 
  * 
- * def target_mean_v2(data, y_name, x_name):             # <<<<<<<<<<<<<<
+ * def v2(data, y_name, x_name):             # <<<<<<<<<<<<<<
  *     result = np.zeros(data.shape[0])
  *     value_dict = dict()
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_2tm_3target_mean_v2(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_2tm_3target_mean_v2 = {"target_mean_v2", (PyCFunction)__pyx_pw_2tm_3target_mean_v2, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_2tm_3target_mean_v2(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_2tm_3v2(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_2tm_3v2 = {"v2", (PyCFunction)__pyx_pw_2tm_3v2, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_2tm_3v2(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_data = 0;
   PyObject *__pyx_v_y_name = 0;
   PyObject *__pyx_v_x_name = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("target_mean_v2 (wrapper)", 0);
+  __Pyx_RefNannySetupContext("v2 (wrapper)", 0);
   {
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_data,&__pyx_n_s_y_name,&__pyx_n_s_x_name,0};
     PyObject* values[3] = {0,0,0};
@@ -2626,17 +2626,17 @@ static PyObject *__pyx_pw_2tm_3target_mean_v2(PyObject *__pyx_self, PyObject *__
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y_name)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("target_mean_v2", 1, 3, 3, 1); __PYX_ERR(0, 12, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("v2", 1, 3, 3, 1); __PYX_ERR(0, 12, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x_name)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("target_mean_v2", 1, 3, 3, 2); __PYX_ERR(0, 12, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("v2", 1, 3, 3, 2); __PYX_ERR(0, 12, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "target_mean_v2") < 0)) __PYX_ERR(0, 12, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "v2") < 0)) __PYX_ERR(0, 12, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -2651,20 +2651,20 @@ static PyObject *__pyx_pw_2tm_3target_mean_v2(PyObject *__pyx_self, PyObject *__
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("target_mean_v2", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 12, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("v2", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 12, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("tm.target_mean_v2", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("tm.v2", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_2tm_2target_mean_v2(__pyx_self, __pyx_v_data, __pyx_v_y_name, __pyx_v_x_name);
+  __pyx_r = __pyx_pf_2tm_2v2(__pyx_self, __pyx_v_data, __pyx_v_y_name, __pyx_v_x_name);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_2tm_2target_mean_v2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_data, PyObject *__pyx_v_y_name, PyObject *__pyx_v_x_name) {
+static PyObject *__pyx_pf_2tm_2v2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_data, PyObject *__pyx_v_y_name, PyObject *__pyx_v_x_name) {
   PyObject *__pyx_v_result = NULL;
   PyObject *__pyx_v_value_dict = NULL;
   PyObject *__pyx_v_count_dict = NULL;
@@ -2681,11 +2681,11 @@ static PyObject *__pyx_pf_2tm_2target_mean_v2(CYTHON_UNUSED PyObject *__pyx_self
   int __pyx_t_8;
   int __pyx_t_9;
   PyObject *__pyx_t_10 = NULL;
-  __Pyx_RefNannySetupContext("target_mean_v2", 0);
+  __Pyx_RefNannySetupContext("v2", 0);
 
   /* "tm.pyx":13
  * 
- * def target_mean_v2(data, y_name, x_name):
+ * def v2(data, y_name, x_name):
  *     result = np.zeros(data.shape[0])             # <<<<<<<<<<<<<<
  *     value_dict = dict()
  *     count_dict = dict()
@@ -2750,7 +2750,7 @@ static PyObject *__pyx_pf_2tm_2target_mean_v2(CYTHON_UNUSED PyObject *__pyx_self
   __pyx_t_1 = 0;
 
   /* "tm.pyx":14
- * def target_mean_v2(data, y_name, x_name):
+ * def v2(data, y_name, x_name):
  *     result = np.zeros(data.shape[0])
  *     value_dict = dict()             # <<<<<<<<<<<<<<
  *     count_dict = dict()
@@ -3163,7 +3163,7 @@ static PyObject *__pyx_pf_2tm_2target_mean_v2(CYTHON_UNUSED PyObject *__pyx_self
  *         result[i] = (value_dict[data.loc[i, x_name]] - data.loc[i, y_name]) / (count_dict[data.loc[i, x_name]] - 1)
  *     return result             # <<<<<<<<<<<<<<
  * 
- * cpdef target_mean_v3(data, y_name, x_name):
+ * cpdef v3(data, y_name, x_name):
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v_result);
@@ -3173,7 +3173,7 @@ static PyObject *__pyx_pf_2tm_2target_mean_v2(CYTHON_UNUSED PyObject *__pyx_self
   /* "tm.pyx":12
  * 
  * 
- * def target_mean_v2(data, y_name, x_name):             # <<<<<<<<<<<<<<
+ * def v2(data, y_name, x_name):             # <<<<<<<<<<<<<<
  *     result = np.zeros(data.shape[0])
  *     value_dict = dict()
  */
@@ -3186,7 +3186,7 @@ static PyObject *__pyx_pf_2tm_2target_mean_v2(CYTHON_UNUSED PyObject *__pyx_self
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_10);
-  __Pyx_AddTraceback("tm.target_mean_v2", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("tm.v2", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_result);
@@ -3201,13 +3201,13 @@ static PyObject *__pyx_pf_2tm_2target_mean_v2(CYTHON_UNUSED PyObject *__pyx_self
 /* "tm.pyx":27
  *     return result
  * 
- * cpdef target_mean_v3(data, y_name, x_name):             # <<<<<<<<<<<<<<
+ * cpdef v3(data, y_name, x_name):             # <<<<<<<<<<<<<<
  *     cdef long nrow = data.shape[0]
  *     cdef np.ndarray[double] result = np.asfortranarray(np.zeros(nrow), dtype=np.float64)
  */
 
-static PyObject *__pyx_pw_2tm_5target_mean_v3(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_f_2tm_target_mean_v3(PyObject *__pyx_v_data, PyObject *__pyx_v_y_name, PyObject *__pyx_v_x_name, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_2tm_5v3(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_f_2tm_v3(PyObject *__pyx_v_data, PyObject *__pyx_v_y_name, PyObject *__pyx_v_x_name, CYTHON_UNUSED int __pyx_skip_dispatch) {
   long __pyx_v_nrow;
   PyArrayObject *__pyx_v_result = 0;
   PyArrayObject *__pyx_v_y = 0;
@@ -3233,7 +3233,7 @@ static PyObject *__pyx_f_2tm_target_mean_v3(PyObject *__pyx_v_data, PyObject *__
   __Pyx_memviewslice __pyx_t_11 = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_t_12 = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_t_13 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_RefNannySetupContext("target_mean_v3", 0);
+  __Pyx_RefNannySetupContext("v3", 0);
   __pyx_pybuffer_result.pybuffer.buf = NULL;
   __pyx_pybuffer_result.refcount = 0;
   __pyx_pybuffernd_result.data = NULL;
@@ -3249,7 +3249,7 @@ static PyObject *__pyx_f_2tm_target_mean_v3(PyObject *__pyx_v_data, PyObject *__
 
   /* "tm.pyx":28
  * 
- * cpdef target_mean_v3(data, y_name, x_name):
+ * cpdef v3(data, y_name, x_name):
  *     cdef long nrow = data.shape[0]             # <<<<<<<<<<<<<<
  *     cdef np.ndarray[double] result = np.asfortranarray(np.zeros(nrow), dtype=np.float64)
  *     cdef np.ndarray[double] y = np.asfortranarray(data[y_name], dtype=np.float64)
@@ -3264,7 +3264,7 @@ static PyObject *__pyx_f_2tm_target_mean_v3(PyObject *__pyx_v_data, PyObject *__
   __pyx_v_nrow = __pyx_t_3;
 
   /* "tm.pyx":29
- * cpdef target_mean_v3(data, y_name, x_name):
+ * cpdef v3(data, y_name, x_name):
  *     cdef long nrow = data.shape[0]
  *     cdef np.ndarray[double] result = np.asfortranarray(np.zeros(nrow), dtype=np.float64)             # <<<<<<<<<<<<<<
  *     cdef np.ndarray[double] y = np.asfortranarray(data[y_name], dtype=np.float64)
@@ -3413,7 +3413,7 @@ static PyObject *__pyx_f_2tm_target_mean_v3(PyObject *__pyx_v_data, PyObject *__
  *     cdef np.ndarray[double] y = np.asfortranarray(data[y_name], dtype=np.float64)
  *     cdef np.ndarray[double] x = np.asfortranarray(data[x_name], dtype=np.float64)             # <<<<<<<<<<<<<<
  * 
- *     target_mean_v3_impl(result, y, x, nrow)
+ *     v3_impl(result, y, x, nrow)
  */
   __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
@@ -3458,14 +3458,14 @@ static PyObject *__pyx_f_2tm_target_mean_v3(PyObject *__pyx_v_data, PyObject *__
   /* "tm.pyx":33
  *     cdef np.ndarray[double] x = np.asfortranarray(data[x_name], dtype=np.float64)
  * 
- *     target_mean_v3_impl(result, y, x, nrow)             # <<<<<<<<<<<<<<
+ *     v3_impl(result, y, x, nrow)             # <<<<<<<<<<<<<<
  *     return result
  * 
  */
   __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(((PyObject *)__pyx_v_result), PyBUF_WRITABLE); if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 33, __pyx_L1_error)
   __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(((PyObject *)__pyx_v_y), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 33, __pyx_L1_error)
   __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(((PyObject *)__pyx_v_x), PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 33, __pyx_L1_error)
-  __pyx_f_2tm_target_mean_v3_impl(__pyx_t_11, __pyx_t_12, __pyx_t_13, __pyx_v_nrow);
+  __pyx_f_2tm_v3_impl(__pyx_t_11, __pyx_t_12, __pyx_t_13, __pyx_v_nrow);
   __PYX_XDEC_MEMVIEW(&__pyx_t_11, 1);
   __pyx_t_11.memview = NULL;
   __pyx_t_11.data = NULL;
@@ -3478,10 +3478,10 @@ static PyObject *__pyx_f_2tm_target_mean_v3(PyObject *__pyx_v_data, PyObject *__
 
   /* "tm.pyx":34
  * 
- *     target_mean_v3_impl(result, y, x, nrow)
+ *     v3_impl(result, y, x, nrow)
  *     return result             # <<<<<<<<<<<<<<
  * 
- * cdef void target_mean_v3_impl(double[:] result, double[:] y, double[:] x, const long nrow):
+ * cdef void v3_impl(double[:] result, double[:] y, double[:] x, const long nrow):
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(((PyObject *)__pyx_v_result));
@@ -3491,7 +3491,7 @@ static PyObject *__pyx_f_2tm_target_mean_v3(PyObject *__pyx_v_data, PyObject *__
   /* "tm.pyx":27
  *     return result
  * 
- * cpdef target_mean_v3(data, y_name, x_name):             # <<<<<<<<<<<<<<
+ * cpdef v3(data, y_name, x_name):             # <<<<<<<<<<<<<<
  *     cdef long nrow = data.shape[0]
  *     cdef np.ndarray[double] result = np.asfortranarray(np.zeros(nrow), dtype=np.float64)
  */
@@ -3515,7 +3515,7 @@ static PyObject *__pyx_f_2tm_target_mean_v3(PyObject *__pyx_v_data, PyObject *__
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_x.rcbuffer->pybuffer);
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_y.rcbuffer->pybuffer);
   __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("tm.target_mean_v3", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("tm.v3", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   goto __pyx_L2;
   __pyx_L0:;
@@ -3532,14 +3532,14 @@ static PyObject *__pyx_f_2tm_target_mean_v3(PyObject *__pyx_v_data, PyObject *__
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_2tm_5target_mean_v3(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_2tm_5target_mean_v3(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_2tm_5v3(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_2tm_5v3(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_data = 0;
   PyObject *__pyx_v_y_name = 0;
   PyObject *__pyx_v_x_name = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("target_mean_v3 (wrapper)", 0);
+  __Pyx_RefNannySetupContext("v3 (wrapper)", 0);
   {
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_data,&__pyx_n_s_y_name,&__pyx_n_s_x_name,0};
     PyObject* values[3] = {0,0,0};
@@ -3565,17 +3565,17 @@ static PyObject *__pyx_pw_2tm_5target_mean_v3(PyObject *__pyx_self, PyObject *__
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y_name)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("target_mean_v3", 1, 3, 3, 1); __PYX_ERR(0, 27, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("v3", 1, 3, 3, 1); __PYX_ERR(0, 27, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x_name)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("target_mean_v3", 1, 3, 3, 2); __PYX_ERR(0, 27, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("v3", 1, 3, 3, 2); __PYX_ERR(0, 27, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "target_mean_v3") < 0)) __PYX_ERR(0, 27, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "v3") < 0)) __PYX_ERR(0, 27, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -3590,26 +3590,26 @@ static PyObject *__pyx_pw_2tm_5target_mean_v3(PyObject *__pyx_self, PyObject *__
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("target_mean_v3", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 27, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("v3", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 27, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("tm.target_mean_v3", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("tm.v3", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_2tm_4target_mean_v3(__pyx_self, __pyx_v_data, __pyx_v_y_name, __pyx_v_x_name);
+  __pyx_r = __pyx_pf_2tm_4v3(__pyx_self, __pyx_v_data, __pyx_v_y_name, __pyx_v_x_name);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_2tm_4target_mean_v3(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_data, PyObject *__pyx_v_y_name, PyObject *__pyx_v_x_name) {
+static PyObject *__pyx_pf_2tm_4v3(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_data, PyObject *__pyx_v_y_name, PyObject *__pyx_v_x_name) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  __Pyx_RefNannySetupContext("target_mean_v3", 0);
+  __Pyx_RefNannySetupContext("v3", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_2tm_target_mean_v3(__pyx_v_data, __pyx_v_y_name, __pyx_v_x_name, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_2tm_v3(__pyx_v_data, __pyx_v_y_name, __pyx_v_x_name, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3618,7 +3618,7 @@ static PyObject *__pyx_pf_2tm_4target_mean_v3(CYTHON_UNUSED PyObject *__pyx_self
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("tm.target_mean_v3", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("tm.v3", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3629,12 +3629,12 @@ static PyObject *__pyx_pf_2tm_4target_mean_v3(CYTHON_UNUSED PyObject *__pyx_self
 /* "tm.pyx":36
  *     return result
  * 
- * cdef void target_mean_v3_impl(double[:] result, double[:] y, double[:] x, const long nrow):             # <<<<<<<<<<<<<<
+ * cdef void v3_impl(double[:] result, double[:] y, double[:] x, const long nrow):             # <<<<<<<<<<<<<<
  *     cdef dict value_dict = dict()
  *     cdef dict count_dict = dict()
  */
 
-static void __pyx_f_2tm_target_mean_v3_impl(__Pyx_memviewslice __pyx_v_result, __Pyx_memviewslice __pyx_v_y, __Pyx_memviewslice __pyx_v_x, long const __pyx_v_nrow) {
+static void __pyx_f_2tm_v3_impl(__Pyx_memviewslice __pyx_v_result, __Pyx_memviewslice __pyx_v_y, __Pyx_memviewslice __pyx_v_x, long const __pyx_v_nrow) {
   PyObject *__pyx_v_value_dict = 0;
   PyObject *__pyx_v_count_dict = 0;
   long __pyx_v_i;
@@ -3661,11 +3661,11 @@ static void __pyx_f_2tm_target_mean_v3_impl(__Pyx_memviewslice __pyx_v_result, _
   Py_ssize_t __pyx_t_20;
   double __pyx_t_21;
   Py_ssize_t __pyx_t_22;
-  __Pyx_RefNannySetupContext("target_mean_v3_impl", 0);
+  __Pyx_RefNannySetupContext("v3_impl", 0);
 
   /* "tm.pyx":37
  * 
- * cdef void target_mean_v3_impl(double[:] result, double[:] y, double[:] x, const long nrow):
+ * cdef void v3_impl(double[:] result, double[:] y, double[:] x, const long nrow):
  *     cdef dict value_dict = dict()             # <<<<<<<<<<<<<<
  *     cdef dict count_dict = dict()
  * 
@@ -3676,7 +3676,7 @@ static void __pyx_f_2tm_target_mean_v3_impl(__Pyx_memviewslice __pyx_v_result, _
   __pyx_t_1 = 0;
 
   /* "tm.pyx":38
- * cdef void target_mean_v3_impl(double[:] result, double[:] y, double[:] x, const long nrow):
+ * cdef void v3_impl(double[:] result, double[:] y, double[:] x, const long nrow):
  *     cdef dict value_dict = dict()
  *     cdef dict count_dict = dict()             # <<<<<<<<<<<<<<
  * 
@@ -3965,7 +3965,7 @@ static void __pyx_f_2tm_target_mean_v3_impl(__Pyx_memviewslice __pyx_v_result, _
   /* "tm.pyx":36
  *     return result
  * 
- * cdef void target_mean_v3_impl(double[:] result, double[:] y, double[:] x, const long nrow):             # <<<<<<<<<<<<<<
+ * cdef void v3_impl(double[:] result, double[:] y, double[:] x, const long nrow):             # <<<<<<<<<<<<<<
  *     cdef dict value_dict = dict()
  *     cdef dict count_dict = dict()
  */
@@ -3977,7 +3977,7 @@ static void __pyx_f_2tm_target_mean_v3_impl(__Pyx_memviewslice __pyx_v_result, _
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_15);
   __Pyx_XDECREF(__pyx_t_16);
-  __Pyx_WriteUnraisable("tm.target_mean_v3_impl", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __Pyx_WriteUnraisable("tm.v3_impl", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_value_dict);
   __Pyx_XDECREF(__pyx_v_count_dict);
@@ -3987,13 +3987,13 @@ static void __pyx_f_2tm_target_mean_v3_impl(__Pyx_memviewslice __pyx_v_result, _
 /* "tm.pyx":56
  * ######################################################################
  * # homework
- * cpdef target_mean_v4(data, y_name, x_name):             # <<<<<<<<<<<<<<
+ * cpdef v4(data, y_name, x_name):             # <<<<<<<<<<<<<<
  *     cdef long nrow = data.shape[0]
  *     cdef np.ndarray[double] result = np.asfortranarray(np.zeros(nrow), dtype=np.float64)
  */
 
-static PyObject *__pyx_pw_2tm_7target_mean_v4(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_f_2tm_target_mean_v4(PyObject *__pyx_v_data, PyObject *__pyx_v_y_name, PyObject *__pyx_v_x_name, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_2tm_7v4(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_f_2tm_v4(PyObject *__pyx_v_data, PyObject *__pyx_v_y_name, PyObject *__pyx_v_x_name, CYTHON_UNUSED int __pyx_skip_dispatch) {
   long __pyx_v_nrow;
   PyArrayObject *__pyx_v_result = 0;
   PyArrayObject *__pyx_v_y = 0;
@@ -4019,7 +4019,7 @@ static PyObject *__pyx_f_2tm_target_mean_v4(PyObject *__pyx_v_data, PyObject *__
   __Pyx_memviewslice __pyx_t_11 = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_t_12 = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_t_13 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_RefNannySetupContext("target_mean_v4", 0);
+  __Pyx_RefNannySetupContext("v4", 0);
   __pyx_pybuffer_result.pybuffer.buf = NULL;
   __pyx_pybuffer_result.refcount = 0;
   __pyx_pybuffernd_result.data = NULL;
@@ -4035,7 +4035,7 @@ static PyObject *__pyx_f_2tm_target_mean_v4(PyObject *__pyx_v_data, PyObject *__
 
   /* "tm.pyx":57
  * # homework
- * cpdef target_mean_v4(data, y_name, x_name):
+ * cpdef v4(data, y_name, x_name):
  *     cdef long nrow = data.shape[0]             # <<<<<<<<<<<<<<
  *     cdef np.ndarray[double] result = np.asfortranarray(np.zeros(nrow), dtype=np.float64)
  *     cdef np.ndarray[double] y = np.asfortranarray(data[y_name], dtype=np.float64)
@@ -4050,7 +4050,7 @@ static PyObject *__pyx_f_2tm_target_mean_v4(PyObject *__pyx_v_data, PyObject *__
   __pyx_v_nrow = __pyx_t_3;
 
   /* "tm.pyx":58
- * cpdef target_mean_v4(data, y_name, x_name):
+ * cpdef v4(data, y_name, x_name):
  *     cdef long nrow = data.shape[0]
  *     cdef np.ndarray[double] result = np.asfortranarray(np.zeros(nrow), dtype=np.float64)             # <<<<<<<<<<<<<<
  *     cdef np.ndarray[double] y = np.asfortranarray(data[y_name], dtype=np.float64)
@@ -4152,7 +4152,7 @@ static PyObject *__pyx_f_2tm_target_mean_v4(PyObject *__pyx_v_data, PyObject *__
  *     cdef np.ndarray[double] result = np.asfortranarray(np.zeros(nrow), dtype=np.float64)
  *     cdef np.ndarray[double] y = np.asfortranarray(data[y_name], dtype=np.float64)             # <<<<<<<<<<<<<<
  *     cdef np.ndarray[int] x = np.asfortranarray(data[x_name], dtype=np.int)
- *     target_mean_v4_impl(result, y, x, nrow)
+ *     v4_impl(result, y, x, nrow)
  */
   __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
@@ -4198,7 +4198,7 @@ static PyObject *__pyx_f_2tm_target_mean_v4(PyObject *__pyx_v_data, PyObject *__
  *     cdef np.ndarray[double] result = np.asfortranarray(np.zeros(nrow), dtype=np.float64)
  *     cdef np.ndarray[double] y = np.asfortranarray(data[y_name], dtype=np.float64)
  *     cdef np.ndarray[int] x = np.asfortranarray(data[x_name], dtype=np.int)             # <<<<<<<<<<<<<<
- *     target_mean_v4_impl(result, y, x, nrow)
+ *     v4_impl(result, y, x, nrow)
  *     return result
  */
   __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 60, __pyx_L1_error)
@@ -4244,14 +4244,14 @@ static PyObject *__pyx_f_2tm_target_mean_v4(PyObject *__pyx_v_data, PyObject *__
   /* "tm.pyx":61
  *     cdef np.ndarray[double] y = np.asfortranarray(data[y_name], dtype=np.float64)
  *     cdef np.ndarray[int] x = np.asfortranarray(data[x_name], dtype=np.int)
- *     target_mean_v4_impl(result, y, x, nrow)             # <<<<<<<<<<<<<<
+ *     v4_impl(result, y, x, nrow)             # <<<<<<<<<<<<<<
  *     return result
  * 
  */
   __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(((PyObject *)__pyx_v_result), PyBUF_WRITABLE); if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 61, __pyx_L1_error)
   __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(((PyObject *)__pyx_v_y), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 61, __pyx_L1_error)
   __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_ds_int(((PyObject *)__pyx_v_x), PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 61, __pyx_L1_error)
-  __pyx_f_2tm_target_mean_v4_impl(__pyx_t_11, __pyx_t_12, __pyx_t_13, __pyx_v_nrow);
+  __pyx_f_2tm_v4_impl(__pyx_t_11, __pyx_t_12, __pyx_t_13, __pyx_v_nrow);
   __PYX_XDEC_MEMVIEW(&__pyx_t_11, 1);
   __pyx_t_11.memview = NULL;
   __pyx_t_11.data = NULL;
@@ -4264,7 +4264,7 @@ static PyObject *__pyx_f_2tm_target_mean_v4(PyObject *__pyx_v_data, PyObject *__
 
   /* "tm.pyx":62
  *     cdef np.ndarray[int] x = np.asfortranarray(data[x_name], dtype=np.int)
- *     target_mean_v4_impl(result, y, x, nrow)
+ *     v4_impl(result, y, x, nrow)
  *     return result             # <<<<<<<<<<<<<<
  * 
  * @cython.profile(False)
@@ -4277,7 +4277,7 @@ static PyObject *__pyx_f_2tm_target_mean_v4(PyObject *__pyx_v_data, PyObject *__
   /* "tm.pyx":56
  * ######################################################################
  * # homework
- * cpdef target_mean_v4(data, y_name, x_name):             # <<<<<<<<<<<<<<
+ * cpdef v4(data, y_name, x_name):             # <<<<<<<<<<<<<<
  *     cdef long nrow = data.shape[0]
  *     cdef np.ndarray[double] result = np.asfortranarray(np.zeros(nrow), dtype=np.float64)
  */
@@ -4301,7 +4301,7 @@ static PyObject *__pyx_f_2tm_target_mean_v4(PyObject *__pyx_v_data, PyObject *__
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_x.rcbuffer->pybuffer);
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_y.rcbuffer->pybuffer);
   __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("tm.target_mean_v4", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("tm.v4", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   goto __pyx_L2;
   __pyx_L0:;
@@ -4318,14 +4318,14 @@ static PyObject *__pyx_f_2tm_target_mean_v4(PyObject *__pyx_v_data, PyObject *__
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_2tm_7target_mean_v4(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_2tm_7target_mean_v4(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_2tm_7v4(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_2tm_7v4(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_data = 0;
   PyObject *__pyx_v_y_name = 0;
   PyObject *__pyx_v_x_name = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("target_mean_v4 (wrapper)", 0);
+  __Pyx_RefNannySetupContext("v4 (wrapper)", 0);
   {
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_data,&__pyx_n_s_y_name,&__pyx_n_s_x_name,0};
     PyObject* values[3] = {0,0,0};
@@ -4351,17 +4351,17 @@ static PyObject *__pyx_pw_2tm_7target_mean_v4(PyObject *__pyx_self, PyObject *__
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y_name)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("target_mean_v4", 1, 3, 3, 1); __PYX_ERR(0, 56, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("v4", 1, 3, 3, 1); __PYX_ERR(0, 56, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x_name)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("target_mean_v4", 1, 3, 3, 2); __PYX_ERR(0, 56, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("v4", 1, 3, 3, 2); __PYX_ERR(0, 56, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "target_mean_v4") < 0)) __PYX_ERR(0, 56, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "v4") < 0)) __PYX_ERR(0, 56, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -4376,26 +4376,26 @@ static PyObject *__pyx_pw_2tm_7target_mean_v4(PyObject *__pyx_self, PyObject *__
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("target_mean_v4", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 56, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("v4", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 56, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("tm.target_mean_v4", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("tm.v4", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_2tm_6target_mean_v4(__pyx_self, __pyx_v_data, __pyx_v_y_name, __pyx_v_x_name);
+  __pyx_r = __pyx_pf_2tm_6v4(__pyx_self, __pyx_v_data, __pyx_v_y_name, __pyx_v_x_name);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_2tm_6target_mean_v4(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_data, PyObject *__pyx_v_y_name, PyObject *__pyx_v_x_name) {
+static PyObject *__pyx_pf_2tm_6v4(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_data, PyObject *__pyx_v_y_name, PyObject *__pyx_v_x_name) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  __Pyx_RefNannySetupContext("target_mean_v4", 0);
+  __Pyx_RefNannySetupContext("v4", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_2tm_target_mean_v4(__pyx_v_data, __pyx_v_y_name, __pyx_v_x_name, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_2tm_v4(__pyx_v_data, __pyx_v_y_name, __pyx_v_x_name, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -4404,7 +4404,7 @@ static PyObject *__pyx_pf_2tm_6target_mean_v4(CYTHON_UNUSED PyObject *__pyx_self
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("tm.target_mean_v4", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("tm.v4", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -4415,12 +4415,12 @@ static PyObject *__pyx_pf_2tm_6target_mean_v4(CYTHON_UNUSED PyObject *__pyx_self
 /* "tm.pyx":67
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
- * cdef void target_mean_v4_impl(double[:] result, double[:] y, int[:] x, const long nrow):             # <<<<<<<<<<<<<<
+ * cdef void v4_impl(double[:] result, double[:] y, int[:] x, const long nrow):             # <<<<<<<<<<<<<<
  *     cdef map[int, double] value_dict
  *     cdef map[int, double] count_dict
  */
 
-static void __pyx_f_2tm_target_mean_v4_impl(__Pyx_memviewslice __pyx_v_result, __Pyx_memviewslice __pyx_v_y, __Pyx_memviewslice __pyx_v_x, long const __pyx_v_nrow) {
+static void __pyx_f_2tm_v4_impl(__Pyx_memviewslice __pyx_v_result, __Pyx_memviewslice __pyx_v_y, __Pyx_memviewslice __pyx_v_x, long const __pyx_v_nrow) {
   std::map<int,double>  __pyx_v_value_dict;
   std::map<int,double>  __pyx_v_count_dict;
   long __pyx_v_i;
@@ -4443,7 +4443,7 @@ static void __pyx_f_2tm_target_mean_v4_impl(__Pyx_memviewslice __pyx_v_result, _
   Py_ssize_t __pyx_t_16;
   double __pyx_t_17;
   Py_ssize_t __pyx_t_18;
-  __Pyx_RefNannySetupContext("target_mean_v4_impl", 0);
+  __Pyx_RefNannySetupContext("v4_impl", 0);
 
   /* "tm.pyx":71
  *     cdef map[int, double] count_dict
@@ -4715,7 +4715,7 @@ static void __pyx_f_2tm_target_mean_v4_impl(__Pyx_memviewslice __pyx_v_result, _
   /* "tm.pyx":67
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
- * cdef void target_mean_v4_impl(double[:] result, double[:] y, int[:] x, const long nrow):             # <<<<<<<<<<<<<<
+ * cdef void v4_impl(double[:] result, double[:] y, int[:] x, const long nrow):             # <<<<<<<<<<<<<<
  *     cdef map[int, double] value_dict
  *     cdef map[int, double] count_dict
  */
@@ -4723,7 +4723,7 @@ static void __pyx_f_2tm_target_mean_v4_impl(__Pyx_memviewslice __pyx_v_result, _
   /* function exit code */
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_WriteUnraisable("tm.target_mean_v4_impl", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __Pyx_WriteUnraisable("tm.v4_impl", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
 }
@@ -20778,8 +20778,8 @@ static PyTypeObject __pyx_type___pyx_memoryviewslice = {
 };
 
 static PyMethodDef __pyx_methods[] = {
-  {"target_mean_v3", (PyCFunction)__pyx_pw_2tm_5target_mean_v3, METH_VARARGS|METH_KEYWORDS, 0},
-  {"target_mean_v4", (PyCFunction)__pyx_pw_2tm_7target_mean_v4, METH_VARARGS|METH_KEYWORDS, 0},
+  {"v3", (PyCFunction)__pyx_pw_2tm_5v3, METH_VARARGS|METH_KEYWORDS, 0},
+  {"v4", (PyCFunction)__pyx_pw_2tm_7v4, METH_VARARGS|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
 
@@ -20922,7 +20922,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_strided_and_indirect, __pyx_k_strided_and_indirect, sizeof(__pyx_k_strided_and_indirect), 0, 0, 1, 0},
   {&__pyx_kp_s_stringsource, __pyx_k_stringsource, sizeof(__pyx_k_stringsource), 0, 0, 1, 0},
   {&__pyx_n_s_struct, __pyx_k_struct, sizeof(__pyx_k_struct), 0, 0, 1, 1},
-  {&__pyx_n_s_target_mean_v2, __pyx_k_target_mean_v2, sizeof(__pyx_k_target_mean_v2), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_s_tm, __pyx_k_tm, sizeof(__pyx_k_tm), 0, 0, 1, 1},
   {&__pyx_kp_s_tm_pyx, __pyx_k_tm_pyx, sizeof(__pyx_k_tm_pyx), 0, 0, 1, 0},
@@ -20931,6 +20930,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_u_unknown_dtype_code_in_numpy_pxd, __pyx_k_unknown_dtype_code_in_numpy_pxd, sizeof(__pyx_k_unknown_dtype_code_in_numpy_pxd), 0, 1, 0, 0},
   {&__pyx_n_s_unpack, __pyx_k_unpack, sizeof(__pyx_k_unpack), 0, 0, 1, 1},
   {&__pyx_n_s_update, __pyx_k_update, sizeof(__pyx_k_update), 0, 0, 1, 1},
+  {&__pyx_n_s_v2, __pyx_k_v2, sizeof(__pyx_k_v2), 0, 0, 1, 1},
   {&__pyx_n_s_value_dict, __pyx_k_value_dict, sizeof(__pyx_k_value_dict), 0, 0, 1, 1},
   {&__pyx_n_s_x_name, __pyx_k_x_name, sizeof(__pyx_k_x_name), 0, 0, 1, 1},
   {&__pyx_n_s_y_name, __pyx_k_y_name, sizeof(__pyx_k_y_name), 0, 0, 1, 1},
@@ -21291,14 +21291,14 @@ static int __Pyx_InitCachedConstants(void) {
   /* "tm.pyx":12
  * 
  * 
- * def target_mean_v2(data, y_name, x_name):             # <<<<<<<<<<<<<<
+ * def v2(data, y_name, x_name):             # <<<<<<<<<<<<<<
  *     result = np.zeros(data.shape[0])
  *     value_dict = dict()
  */
   __pyx_tuple__32 = PyTuple_Pack(7, __pyx_n_s_data, __pyx_n_s_y_name, __pyx_n_s_x_name, __pyx_n_s_result, __pyx_n_s_value_dict, __pyx_n_s_count_dict, __pyx_n_s_i); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__32);
   __Pyx_GIVEREF(__pyx_tuple__32);
-  __pyx_codeobj__33 = (PyObject*)__Pyx_PyCode_New(3, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_tm_pyx, __pyx_n_s_target_mean_v2, 12, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__33)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_codeobj__33 = (PyObject*)__Pyx_PyCode_New(3, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_tm_pyx, __pyx_n_s_v2, 12, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__33)) __PYX_ERR(0, 12, __pyx_L1_error)
 
   /* "View.MemoryView":285
  *         return self.name
@@ -21720,13 +21720,13 @@ if (!__Pyx_RefNanny) {
   /* "tm.pyx":12
  * 
  * 
- * def target_mean_v2(data, y_name, x_name):             # <<<<<<<<<<<<<<
+ * def v2(data, y_name, x_name):             # <<<<<<<<<<<<<<
  *     result = np.zeros(data.shape[0])
  *     value_dict = dict()
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_2tm_3target_mean_v2, NULL, __pyx_n_s_tm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_2tm_3v2, NULL, __pyx_n_s_tm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_target_mean_v2, __pyx_t_1) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_v2, __pyx_t_1) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "tm.pyx":1
